@@ -33,7 +33,7 @@ contract Prediction {
         return prediction;
     }
     function isInvestor(address candidate) private view returns (bool) {
-        for (uint i = 0; i< investors.length; i++) {
+        for (uint i = 0; i < investors.length; i++) {
             if (investors[i] == candidate) return true;
         }
         return false;

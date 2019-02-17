@@ -1,0 +1,19 @@
+{
+  "name": "uscblockathon",
+  "version": "0.1.0",
+  "description": "A decentralized app where market researchers can sell their predictions",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wduan1025/USCBlockathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wduan1025/USCBlockathon/issues"
+  },
+  "homepage": "https://github.com/wduan1025/USCBlockathon#readme"
+}
