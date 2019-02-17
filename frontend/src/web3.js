@@ -13,7 +13,7 @@ if(typeof window !== "undefined" && typeof window.web3 !== "undefined"){
     // web3 = new Web3(provider);
     console.error("No web3 provider found, fall back to Ganache");
     alert("No web3 provider found");
-    web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+    web3 = new Web3.providers.HttpProvider('http://localhost:7545');
 }
 
 export default web3;

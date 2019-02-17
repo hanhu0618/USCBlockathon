@@ -2,6 +2,7 @@ import React from 'react';
 import Researcherimg from './img/Researcher.png';
 import Cover from './img/cover.png';
 import web3 from './web3';
+import inst from "./factory";
 
 let input_val = '';
 
@@ -34,21 +35,22 @@ export default class Researcher extends React.Component {
   }
 
   submit = async(e) => {
-    e.preventDefault();
-    const hoa = HOA(this.props.address);
+    // e.preventDefault();
+    console.log(inst.methods);
     this.setState({loading:true, errorMessage: ""});
     try{
         const accounts = await web3.eth.getAccounts();
-        await hoa.methods.contribute().send({
-            from: accounts[0],
-            value: web3.utils.toWei(this.state.value, "ether")
-        });
-        Router.replaceRoute(`/hoa/${this.props.address}`);
+        await inst.methods.createPrediction(
+          this.state.term,
+          1
+        )
+        .send({
+          from: accounts[0]
+        })
     } catch(err) {
         this.setState({errorMessage:err.message});
     }
     this.setState({loading: false, value:""});
-    console.log(input_val);
   }
 }
 
