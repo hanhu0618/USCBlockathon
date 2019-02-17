@@ -1,6 +1,7 @@
 import React from 'react';
 import Researcherimg from './img/Researcher.png';
 import Cover from './img/cover.png';
+import web3 from './web3';
 
 let input_val = '';
 
@@ -32,7 +33,21 @@ export default class Researcher extends React.Component {
     this.setState({term});
   }
 
-  submit() {
+  submit = async(e) => {
+    e.preventDefault();
+    const hoa = HOA(this.props.address);
+    this.setState({loading:true, errorMessage: ""});
+    try{
+        const accounts = await web3.eth.getAccounts();
+        await hoa.methods.contribute().send({
+            from: accounts[0],
+            value: web3.utils.toWei(this.state.value, "ether")
+        });
+        Router.replaceRoute(`/hoa/${this.props.address}`);
+    } catch(err) {
+        this.setState({errorMessage:err.message});
+    }
+    this.setState({loading: false, value:""});
     console.log(input_val);
   }
 }
