@@ -2,10 +2,9 @@ import React from 'react';
 import Researcherimg from './img/Researcher.png';
 import Cover from './img/cover.png';
 import web3 from './web3';
-import inst from "./factory";
+import instance from "./factory";
 
 let input_val = '';
-
 
 export default class Researcher extends React.Component {
 
@@ -36,18 +35,21 @@ export default class Researcher extends React.Component {
 
   submit = async(e) => {
     // e.preventDefault();
-    console.log(inst.methods);
+    console.log('Deploying prediction...');
+    console.log('Prediction successfully deployed!');
     this.setState({loading:true, errorMessage: ""});
     try{
+        console.log(instance);
         const accounts = await web3.eth.getAccounts();
-        await inst.methods.createPrediction(
-          this.state.term,
+        await instance.methods.createPrediction(
+          1,
           1
-        )
-        .send({
+        ).call({
           from: accounts[0]
         })
+        console.log('Push to contract');
     } catch(err) {
+        // console.log(err);
         this.setState({errorMessage:err.message});
     }
     this.setState({loading: false, value:""});
