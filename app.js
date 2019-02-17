@@ -9,7 +9,6 @@ function init() {
     initWeb3();
 }
 
-
 function initWeb3() {
     // Modern dapp browsers...
     if (window.ethereum) {
@@ -28,7 +27,7 @@ function initWeb3() {
     }
     // If no injected web3 instance is detected, fall back to Ganache
     else {
-        console.error("No web3 provideer found, fall back to Ganache");
+        console.error("No web3 provider found, fall back to Ganache");
         alert("No web3 provider found");
         web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
